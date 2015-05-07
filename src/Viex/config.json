@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Viex"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Viex-fb39735a-3376-4b85-8840-63f740c3d0b9;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
