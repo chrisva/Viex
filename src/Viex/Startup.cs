@@ -28,7 +28,7 @@ namespace Viex
     {
         public Startup(IHostingEnvironment env)
         {
-            // Setup configuration sources.
+            // Setup configuration sources. Sergey
             var configuration = new Configuration()
                 .AddJsonFile("config.json")
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
