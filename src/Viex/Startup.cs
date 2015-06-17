@@ -1,4 +1,5 @@
-﻿using System;
+﻿using React.AspNet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -77,8 +78,12 @@ namespace Viex
                 options.ClientSecret = Configuration["Authentication:MicrosoftAccount:ClientSecret"];
             });
 
+
+            services.AddReact();
+
             // Add MVC services to the services container.
             services.AddMvc();
+
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
@@ -89,6 +94,23 @@ namespace Viex
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
             // Configure the HTTP request pipeline.
+
+            app.UseReact(config =>
+            {
+                // ES6 features are enabled by default. Uncomment the below line to disable them.
+                // See http://reactjs.net/guides/es6.html for more information.
+                //config.SetUseHarmony(false);
+                // Uncomment the below line if you are using Flow
+                // See http://reactjs.net/guides/flow.html for more information.
+                //config.SetStripTypes(true);
+                // If you want to use server-side rendering of React components,
+                // add all the necessary JavaScript files here. This includes
+                // your components as well as all of their dependencies.
+                // See http://reactjs.net/ for more information. Example:
+                //config
+                config.AddScript("~/Scripts/Tutorial.jsx");
+                //  .AddScript("~/Scripts/Second.jsx");
+            });
 
             // Add the console logger.
             loggerfactory.AddConsole(minLevel: LogLevel.Warning);
